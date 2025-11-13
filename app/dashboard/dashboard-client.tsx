@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
 import { signOut } from 'next-auth/react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -11,7 +10,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Switch } from '@/components/ui/switch';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { toast } from 'sonner';
-import { Plus, Trash2, ExternalLink, BarChart3, Settings, LogOut, GripVertical } from 'lucide-react';
+import { Plus, Trash2, ExternalLink, BarChart3, LogOut, GripVertical } from 'lucide-react';
 import {
   DndContext,
   closestCenter,
@@ -109,9 +108,8 @@ function SortableLink({
 }
 
 export default function DashboardClient({ user }: { user: User }) {
-  const router = useRouter();
   const [links, setLinks] = useState<Link[]>([]);
-  const [profile, setProfile] = useState<any>(null);
+  const [profile, setProfile] = useState<any>(null); // eslint-disable-line @typescript-eslint/no-explicit-any
   const [isLoading, setIsLoading] = useState(true);
   const [newLink, setNewLink] = useState({ title: '', url: '' });
 
